@@ -1,0 +1,46 @@
+- defaults:
+    link:
+        relink: true
+      
+- clean: ['~']
+
+- link:
+    ~/.zshenv: zshenv
+    ~/bin:
+        path: bin/
+        create: true
+    ~/.icons:
+        path: icons/
+        create: true
+    ~/.fonts:
+        path: fonts/
+        create: true
+    ~/.Xresources: Xresources
+    ~/.xinitrc: xinitrc
+    ~/.config/awesome:
+        path: config/awesome/
+        create: true
+    ~/.config/zsh:
+        path: config/zsh/
+        create: true
+    ~/.config/vim:
+        path: config/vim/
+        create: true
+    ~/.config/fontforge:
+        path: config/fontforge/
+        create: true
+    ~/.config/base16-shell:
+        path: config/base16-shell/
+        create: true
+    ~/.config/tmux:
+        path: config/tmux/
+        create: true
+    ~/.config/ranger:
+        path: config/ranger/
+        create: true
+    ~/.config/vimperator:
+        path: config/vimperator/
+        create: true
+
+- shell:
+    - [git submodule update --init --recursive, Installing submodules]

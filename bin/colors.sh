@@ -1,0 +1,8 @@
+printf "\x1b[30mBLACK\x1b[0m\n"
+printf "\x1b[31mRED\x1b[0m\t\x1b[41mRED\x1b[0m\n"
+printf "\x1b[32mGREEN\x1b[0m\t\x1b[42mGREEN\x1b[0m\n"
+printf "\x1b[33mYELLOW\x1b[0m\t\x1b[43mYELLOW\x1b[0m\n"
+printf "\x1b[34mBLUE\x1b[0m\t\x1b[44mBLUE\x1b[0m\n"
+printf "\x1b[35mMAGENTA\x1b[0m\t\x1b[45mMAGENTA\x1b[0m\n"
+printf "\x1b[36mCYAN\x1b[0m\t\x1b[46mCYAN\x1b[0m\n"
+printf "\x1b[37mWHITE\x1b[0m\t\x1b[47mWHITE\x1b[0m\n"

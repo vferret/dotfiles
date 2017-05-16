@@ -1,0 +1,224 @@
+" <F2>				Сохранить файл
+" <F3>				Открытие\Закрытие NERDTree
+" <F4>				Просмотр списка буферов
+" <F5>				Предыдущий буфер
+" <F6>				Следующий буфер
+" <F10>				Выйти из редактора
+" <C+T> и <C+W>		Открытие\закрытие новой вкладки
+" <S+TAB> и <C+TAB>	Переключение табов (вкладок)
+
+" Основные настройки {{{
+set nocompatible			" Включаем несовместимость настроек с предшественником Vi
+set wrap					" Включаем перенос строк (set nowrap отключает перенос строк)
+set mouse=a					" Включаем поддержку мыши при работе в терминале 
+syntax on 					" Включаем подсветку синтаксиса
+set showmatch				" Показывать первую парную скобку после ввода второй
+set t_Co=256				" Использовать больше цветов в терминале
+set number					" Включает отображение номеров строк
+set relativenumber
+set smartindent				" Включаем ‘умную’ автоматическую расстановку отступов
+set autoindent				" Копирует отступ от предыдущей строки » наследовать отступы предыдущей строки
+set tabstop=4				" Размер табуляции
+set shiftwidth=4			" Размер сдвига при нажатии на клавиши «<» и «>»
+set foldmethod=manual		" Метод фолдинга — вручную (для обычных файлов)
+set foldmethod=marker		" Метод фолдинга — по синтаксису
+set completeopt=menu		" Опции авто-дополнения
+set wildmenu				" Показывать всех кандидатов для выбора при авто-завершении команд в командной строке
+set clipboard=unnamed		" Включить общий буфер
+" }}}
+
+" Внешний вид {{{
+set dir=~/.cache/vim
+set showtabline=1			" Показывать строку вкладок всегда
+set laststatus=2			" Показывать строку статуса всегда
+set noshowmode				" Выключить отображение режимов
+set nocursorline			" Отключить подчеркивание строки с курсором
+hi CursorLine cterm=none ctermbg=darkgray
+hi VertSplit ctermfg=black ctermbg=none
+" }}}
+
+" Поиск {{{
+set hlsearch 				" Включаем подсветку выражения, которое ищется в тексте
+set nohlsearch 				" Отключение подсветки найденных выражений
+set incsearch 				" При поиске перескакивать на найденный текст в процессе набора строки
+set smartcase 				" Если содержит символы в верхнем регистре — ищет с учётом регистра, иначе — без
+set nowrapscan 				" Останавливать поиск при достижении конца файла
+set ignorecase 				" Игнорировать регистр букв при поиске
+set imsearch=-1 			" В режиме поиска используется раскладка, заданная по умолчанию
+set imsearch=0 				" по умолчанию латинская (английская) раскладка при поиске
+set history=128 			" хранить больше истории команд
+set undolevels=1000 		" Размер истории для отмены правок
+set infercase 				" предлагать авто-дополнение на основе уже введённого регистра
+" }}}
+
+" Кодировка {{{
+set encoding=utf-8			" Кодировка по умолчанию
+set termencoding=utf-8		" Кодировка по умолчанию
+set fileformat=unix			" Формат файла по умолчанию
+set ffs=unix,dos,mac		" Формат файла, влияющий на окончания строк — будет перебирать в указанном порядке
+set fileencodings=utf-8,koi8-r,cp1251,cp866	" Список кодировок файлов для авто-определения
+" }}}
+
+" Переменные окружения {{{
+set noswapfile
+set undodir=$XDG_CACHE_HOME/vim/undo
+set directory=$XDG_CACHE_HOME/vim/swap
+set backupdir=$XDG_CACHE_HOME/vim/backup
+set viminfo+='1000,n$XDG_CACHE_HOME/vim/viminfo
+set runtimepath+=$XDG_CONFIG_HOME/vim,$XDG_CONFIG_HOME/vim/after,$VIMRUNTIME
+" }}}
+
+" Работа с файлами {{{
+let g:netrw_home=$XDG_CACHE_HOME.'/vim'
+let g:netrw_banner=0
+let g:netrw_browse_split=4
+let g:netrw_altv=1
+let g:netrw_liststyle=3
+let g:netrw_list_hide=netrw_gitignore#Hide()
+let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
+filetype plugin indent on
+set path+=**
+" }}}
+
+" Горячие клавиши {{{
+	" Сохранить файл по <F2>
+nmap  <F2>  :w!<CR>
+imap  <F2>  <Esc>:w!<CR>
+vmap  <F2>  <Esc>:w!<CR>
+	" NERDTree <F3>
+nmap  <F3>  :NERDTreeToggle<CR>
+imap  <F3>  <Esc>:NERDTreeToggle<CR>
+vmap  <F3>  <Esc>:NERDTreeToggle<CR>
+	" Выйти из редактора по <F10>
+nmap  <F10>  :q<CR>
+imap  <F10>  <Esc>:q<CR>
+vmap  <F10>  <Esc>:q<CR>
+	" Просмотр списка буферов по <F4>
+nmap  <F4>  <Esc>:buffers<CR>
+vmap  <F4>  <Esc>:buffers<CR>
+imap  <F4>  <Esc><Esc>:buffers<CR>
+	" Предыдущий буфер по <F5>
+map   <F5>  :bp<CR>
+vmap  <F5>  <Esc>:bp<CR>i
+imap  <F5>  <Esc>:bp<CR>i
+	" Следующий буфер по <F6>
+map   <F6>  :bn<CR>
+vmap  <F6>  <Esc>:bn<CR>i
+imap  <F6>  <Esc>:bn<CR>i
+	" Переключение табов (вкладок) с помощью SHIFT+TAB и CTRL+TAB
+map   <S-TAB>  :tabprevious<CR>
+nmap  <S-TAB>  :tabprevious<CR>
+imap  <S-TAB>  <Esc>:tabprevious<CR>i
+map   <C-TAB>  :tabnext<CR>
+nmap  <C-TAB>  :tabnext<CR>
+imap  <C-TAB>  <Esc>:tabnext<CR>i
+	" Открытие\закрытие новой вкладки по CTRL+T и CTRL+W
+nmap  <C-t>  :tabnew<CR>
+imap  <C-t>  <Esc>:tabnew<CR>a
+" nmap  <C-w>  :tabclose<CR>
+" imap  <C-w>  <Esc>:tabclose<CR>
+" }}}
+
+" Плагины {{{
+	" Plug
+call plug#begin('$XDG_CONFIG_HOME/vim/plugged')
+	Plug 'itchyny/lightline.vim'
+	Plug 'tpope/vim-fugitive'
+	Plug 'tpope/vim-surround'
+	Plug 'chriskempson/base16-vim'
+	Plug 'scrooloose/nerdtree'
+	Plug 'ryanoasis/vim-devicons'
+call plug#end()
+	" NERDTree
+let NERDTreeShowHidden=1
+let NERDTreeHiddenFirst=1
+let NERDTreeMinimalUI=1
+let NERDTreeWinSize=40
+	" LightLine
+let g:lightline = {
+      \ 'component_function': {
+      \   'filetype': 'MyFiletype',
+      \   'fileformat': 'MyFileformat',
+      \ }
+      \ }
+let g:lightline = {
+      \ 'colorscheme': '16color',
+      \ 'mode_map': { 'c': 'NORMAL' },
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ]
+      \ },
+      \ 'component_function': {
+      \   'modified': 'LightlineModified',
+      \   'readonly': 'LightlineReadonly',
+      \   'fugitive': 'LightlineFugitive',
+      \   'fileformat': 'LightlineFileformat',
+      \   'filename': 'LightlineFilename',
+      \   'filetype': 'LightlineFiletype',
+      \   'fileencoding': 'LightlineFileencoding',
+      \   'mode': 'LightlineMode',
+      \ },
+      \ 'separator': { 'left': '⮀', 'right': '⮂' },
+      \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
+      \ }
+function! LightlineModified()
+  return &ft =~ 'help\|NERD' ? '': &modified ? '+' : &modifiable ? '' : '-'
+endfunction
+function! LightlineReadonly()
+  return &ft !~? 'help\|NERD' && &readonly ? '⭤' : ''
+endfunction
+function! LightlineFilename()
+  let fname = expand('%:t')
+  return fname == 'ControlP' && has_key(g:lightline, 'ctrlp_item') ? g:lightline.ctrlp_item :
+        \ fname == '__Tagbar__' ? g:lightline.fname :
+        \ fname =~ '__Gundo\|NERD_tree' ? '' :
+        \ &ft == 'vimfiler' ? vimfiler#get_status_string() :
+        \ &ft == 'unite' ? unite#get_status_string() :
+        \ &ft == 'vimshell' ? vimshell#get_status_string() :
+        \ ('' != LightlineReadonly() ? LightlineReadonly() . ' ' : '') .
+        \ ('' != fname ? WebDevIconsGetFileTypeSymbol() . fname : '[No Name]') .
+        \ ('' != LightlineModified() ? ' ' . LightlineModified() : '')
+endfunction
+function! LightlineFugitive()
+  try
+    if expand('%:t') !~? 'Tagbar\|Gundo\|NERD' && &ft !~? 'vimfiler' && exists('*fugitive#head')
+      let mark = ''  " edit here for cool mark
+      let branch = fugitive#head()
+      return branch !=# '' ? mark.branch : ''
+    endif
+  catch
+  endtry
+  return ''
+endfunction
+function! LightlineFileformat()
+  return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
+endfunction
+function! LightlineFiletype()
+  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
+endfunction
+function! LightlineFileencoding()
+  return winwidth(0) > 70 ? (&fenc !=# '' ? &fenc : &enc) : ''
+endfunction
+	function! LightlineMode()
+  let fname = expand('%:t')
+  return fname == '__Tagbar__' ? 'Tagbar' :
+        \ fname == 'ControlP' ? 'CtrlP' :
+        \ fname == '__Gundo__' ? 'Gundo' :
+        \ fname == '__Gundo_Preview__' ? 'Gundo Preview' :
+        \ fname =~ 'NERD_tree' ? 'NERDTree' :
+        \ &ft == 'unite' ? 'Unite' :
+        \ &ft == 'vimfiler' ? 'VimFiler' :
+        \ &ft == 'vimshell' ? 'VimShell' :
+        \ winwidth(0) > 60 ? lightline#mode() : ''
+endfunction
+	" Base 16
+if filereadable(expand("~/.config/vim/vimrc_background"))
+  let base16colorspace=256
+  source ~/.config/vim/vimrc_background
+endif
+" }}}
+
+" Прочее {{{
+set nobackup
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+" }}}
