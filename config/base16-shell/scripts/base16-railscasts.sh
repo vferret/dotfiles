@@ -98,6 +98,8 @@ else
   printf $printf_template_custom 12 ";7" # cursor (reverse video)
 fi
 
+echo -e 'color00="#2b2b2b"\n color01="#da4939"\n color02="#a5c261"\n color03="#ffc66d"\n color04="#6d9cbe"\n color05="#b6b3eb"\n color06="#519f50"\n color07="#e6e1dc"\n color08="#5a647e"\n color09="#da4939"\n color10="#a5c261"\n color11="#ffc66d"\n color12="#6d9cbe"\n color13="#b6b3eb"\n color14="#519f50"\n color15="#f9f7f3"\n color16="#cc7833"\n color17="#bc9458"\n color18="#272935"\n color19="#3a4055"\n color20="#d4cfc9"\n color21="#f4f1ed"\n color_foreground="#e6e1dc"\n color_background="#2b2b2b"\n color_cursor="#e6e1dc"' > ~/.config/awesome/themes/colors
+
 # clean up
 unset printf_template
 unset printf_template_var

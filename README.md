@@ -1,1 +1,1 @@
-# .dotfiles
+# Configuration files for Awesome.

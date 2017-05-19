@@ -1,5 +1,5 @@
-" <F2>				Сохранить файл
-" <F3>				Открытие\Закрытие NERDTree
+" <F2>				Открытие\Закрытие NERDTree
+" <F3>				Сохранить файл
 " <F4>				Просмотр списка буферов
 " <F5>				Предыдущий буфер
 " <F6>				Следующий буфер
@@ -28,6 +28,9 @@ set clipboard=unnamed		" Включить общий буфер
 " }}}
 
 " Внешний вид {{{
+let &t_SI = "\<Esc>[5 q"	" Курсор для режима INSERT
+let &t_SR = "\<Esc>[3 q"	" Курсор для режима REPLACE
+let &t_EI = "\<Esc>[1 q"	" Курсор для режима NORMAL 
 set dir=~/.cache/vim
 set showtabline=1			" Показывать строку вкладок всегда
 set laststatus=2			" Показывать строку статуса всегда
@@ -81,14 +84,14 @@ set path+=**
 " }}}
 
 " Горячие клавиши {{{
-	" Сохранить файл по <F2>
-nmap  <F2>  :w!<CR>
-imap  <F2>  <Esc>:w!<CR>
-vmap  <F2>  <Esc>:w!<CR>
-	" NERDTree <F3>
-nmap  <F3>  :NERDTreeToggle<CR>
-imap  <F3>  <Esc>:NERDTreeToggle<CR>
-vmap  <F3>  <Esc>:NERDTreeToggle<CR>
+	" NERDTree <F2>
+nmap  <F2>  :NERDTreeToggle<CR>
+imap  <F2>  <Esc>:NERDTreeToggle<CR>
+vmap  <F2>  <Esc>:NERDTreeToggle<CR>
+	" Сохранить файл по <F3>
+nmap  <F3>  :w!<CR>
+imap  <F3>  <Esc>:w!<CR>
+vmap  <F3>  <Esc>:w!<CR>
 	" Выйти из редактора по <F10>
 nmap  <F10>  :q<CR>
 imap  <F10>  <Esc>:q<CR>
@@ -117,6 +120,10 @@ nmap  <C-t>  :tabnew<CR>
 imap  <C-t>  <Esc>:tabnew<CR>a
 " nmap  <C-w>  :tabclose<CR>
 " imap  <C-w>  <Esc>:tabclose<CR>
+vnoremap > >gv
+vnoremap < <gv
+cmap w!! w !sudo tee % >/dev/null
+inoremap jj <ESC>
 " }}}
 
 " Плагины {{{
