@@ -42,8 +42,8 @@ do
 end
 -- }}}
 
--- *Old themes define colours*
--- beautiful.init(awful.util.get_themes_dir() .. "default/theme.lua")
+-- *Old themes define colours*{{{
+-- beautiful.init(awful.util.get_themes_dir() .. "default/theme.lua")}}}
 
 terminal = "urxvt"
 editor = os.getenv("EDITOR") or "vim"
@@ -51,7 +51,7 @@ editor_cmd = terminal .. " -e " .. editor
 browser = "firefox"
 modkey = "Mod4"
 
--- *Old Table of layouts to cover with awful.layout.inc, order matters.*
+-- *Old Table of layouts to cover with awful.layout.inc, order matters.*{{{
 -- awful.layout.layouts = {
 --     awful.layout.suit.floating,
 --     awful.layout.suit.tile,
@@ -69,8 +69,7 @@ modkey = "Mod4"
     -- awful.layout.suit.corner.ne,
     -- awful.layout.suit.corner.sw,
     -- awful.layout.suit.corner.se,
--- }
--- }}}
+-- }}}}
 
 -- Layoutbox
 local layoutbox = {}
@@ -96,7 +95,7 @@ local function client_menu_toggle_fn()
 end
 -- }}}
 
--- *Old menu*
+-- *Old menu*{{{
 -- Create a launcher widget and a main menu
 -- myawesomemenu = {
 --    { "hotkeys", function() return false, hotkeys_popup.show_help end},
@@ -115,7 +114,7 @@ end
 --                                      menu = mymainmenu })
 
 -- Menubar configuration
--- menubar.utils.terminal = terminal -- Set the terminal for applications that require it
+-- menubar.utils.terminal = terminal -- Set the terminal for applications that require it}}}
 
 -- *Old keyboard map indicator and switcher*
 mykeyboardlayout = awful.widget.keyboardlayout()
@@ -138,7 +137,7 @@ tray.buttons = awful.util.table.join(
 	awful.button({}, 1, function() redflat.widget.minitray:toggle() end)
 )
 
--- Software update indcator
+-- Software update indcator{{{
 --------------------------------------------------------------------------------
 -- local upgrades = {}
 -- upgrades.widget = redflat.widget.upgrades()
@@ -150,7 +149,7 @@ tray.buttons = awful.util.table.join(
 -- 
 -- tray.buttons = awful.util.table.join(
 -- 	awful.button({}, 1, function() redflat.widget.minitray:toggle() end)
--- )
+-- )}}}
 
 -- PA volume control
 --------------------------------------------------------------------------------
@@ -163,7 +162,7 @@ volume.buttons = awful.util.table.join(
 	awful.button({}, 2, function() redflat.widget.pulse:mute()                         end)
 )
 
--- Mail widget
+-- Mail widget{{{
 --------------------------------------------------------------------------------
 -- safe load private mail settings
 -- local my_mails = {}
@@ -177,7 +176,7 @@ volume.buttons = awful.util.table.join(
 -- mail.buttons = awful.util.table.join(
 -- 	awful.button({ }, 1, function () awful.spawn.with_shell("claws-mail") end),
 -- 	awful.button({ }, 2, function () redflat.widget.mail:update() end)
--- )
+-- )}}}
 
 -- System resource monitoring widgets
 --------------------------------------------------------------------------------
@@ -238,7 +237,7 @@ textclock.widget = redflat.widget.textclock({ timeformat = "%H:%M", dateformat =
 -- Separator
 local separator = redflat.gauge.separator.vertical()
 
--- -- *Old Taglist*
+-- -- *Old Taglist*{{{
 -- local taglist_buttons = gears.table.join(
 --                     awful.button({ }, 1, function(t) t:view_only() end),
 --                     awful.button({ modkey }, 1, function(t)
@@ -254,7 +253,7 @@ local separator = redflat.gauge.separator.vertical()
 --                                           end),
 --                     awful.button({ }, 4, function(t) awful.tag.viewnext(t.screen) end),
 --                     awful.button({ }, 5, function(t) awful.tag.viewprev(t.screen) end)
---                 )
+--                 )}}}
 
 -- Taglist
 local taglist = {}
@@ -269,7 +268,7 @@ taglist.buttons = awful.util.table.join(
 	awful.button({         }, 5, function(t) awful.tag.viewprev(t.screen) end)
 )
 
--- *Old Tasklist*
+-- *Old Tasklist*{{{
 -- local tasklist_buttons = gears.table.join(
 --                      awful.button({ }, 1, function (c)
 --                                               if c == client.focus then
@@ -293,7 +292,7 @@ taglist.buttons = awful.util.table.join(
 --                                           end),
 --                      awful.button({ }, 5, function ()
 --                                               awful.client.focus.byidx(-1)
---                                           end))
+--                                           end))}}}
 
 -- Tasklist
 local tasklist = {}
@@ -305,7 +304,7 @@ tasklist.buttons = awful.util.table.join(
 	awful.button({}, 5, redflat.widget.tasklist.action.switch_prev)
 )
 
--- local function set_wallpaper(s)
+-- local function set_wallpaper(s){{{
 --     -- Wallpaper
 --     if beautiful.wallpaper then
 --         local wallpaper = beautiful.wallpaper
@@ -315,10 +314,10 @@ tasklist.buttons = awful.util.table.join(
 --         end
 --         gears.wallpaper.maximized(wallpaper, s, true)
 --     end
--- end
+-- end}}}
 
--- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
--- screen.connect_signal("property::geometry", set_wallpaper)
+-- Re-set wallpaper when a screen's geometry changes (e.g. different resolution){{{
+-- screen.connect_signal("property::geometry", set_wallpaper)}}}
 
 local al = awful.layout.layouts
 
@@ -327,60 +326,59 @@ awful.screen.connect_for_each_screen(function(s)
     -- set_wallpaper(s)
 	env.wallpaper(s)
 
-    -- *Old taglist*
-    -- awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1
+    -- *Old taglist*{{{
+    -- awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1}}}
 	
 	-- Tag list
-	awful.tag({ "Main", "Edit", "Inet", "Read", "Free" }, s, { al[5], al[6], al[6], al[4], al[3] })
+	awful.tag({ "Main", "Read", "Inet", "Media", "Work" }, s, { al[5], al[6], al[6], al[4], al[3] })
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
 	
-	-- *Old layoutbox
+	-- *Old layoutbox{{{
 	-- s.mylayoutbox = awful.widget.layoutbox(s)
     -- s.mylayoutbox:buttons(gears.table.join(
     --                        awful.button({ }, 1, function () awful.layout.inc( 1) end),
     --                        awful.button({ }, 3, function () awful.layout.inc(-1) end),
     --                        awful.button({ }, 4, function () awful.layout.inc( 1) end),
-    --                        awful.button({ }, 5, function () awful.layout.inc(-1) end)))
+    --                        awful.button({ }, 5, function () awful.layout.inc(-1) end)))}}}
 
 	-- Create Layoutbox
 	layoutbox[s] = redflat.widget.layoutbox({ screen = s })
 
-    -- *Create an old taglist
-    -- s.mytaglist = awful.widget.taglist(s, awful.widget.taglist.filter.all, taglist_buttons)
+    -- *Create an old taglist{{{
+    -- s.mytaglist = awful.widget.taglist(s, awful.widget.taglist.filter.all, taglist_buttons)}}}
 
 	-- Create a taglist
 	taglist[s] = redflat.widget.taglist({ screen = s, buttons = taglist.buttons, hint = env.tagtip }, taglist.style)
 
-
-    -- *Create an old tasklist*
-    -- s.mytasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, tasklist_buttons)
+    -- *Create an old tasklist*{{{
+    -- s.mytasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, tasklist_buttons)}}}
 
 	-- Create a tasklist
 		tasklist[s] = redflat.widget.tasklist({ screen = s, buttons = tasklist.buttons })
 
-    -- *Old panel*
-    -- s.mywibox = awful.wibar({ position = "top", screen = s })
+    -- *Old panel*{{{
+    -- s.mywibox = awful.wibar({ position = "top", screen = s })}}}
 
 	-- Panel	
 	s.panel = awful.wibar({ position = "top", screen = s, height = beautiful.panel_height or 36 })
 
-    -- *Old add widgets to the wibox*
+    -- *Old add widgets to the wibox*{{{
     -- s.mywibox:setup {
-    --     layout = wibox.layout.align.horizontal,
+    --     layout = wibox.layout.align.horizontal,}}}
 	
 	-- Add widgets
 	s.panel:setup {
 		layout = wibox.layout.align.horizontal,
 
-	-- *Old left widgets*
+	-- *Old left widgets*{{{
         -- {
         --     layout = wibox.layout.fixed.horizontal,
         --     mylauncher,
         --     s.mytaglist,
         --     s.mypromptbox,
-        -- },
+        -- },}}}
 
 	-- Left widget
 		{
@@ -392,8 +390,8 @@ awful.screen.connect_for_each_screen(function(s)
 			s.mypromptbox,
 		},
 
-		-- *Old middle widget*
-        -- s.mytasklist, 
+		-- *Old middle widget*{{{
+        -- s.mytasklist, }}}
 
 		-- Middle widget
 		{
@@ -404,14 +402,14 @@ awful.screen.connect_for_each_screen(function(s)
 			env.wrapper(tasklist[s], "tasklist"),
 		},
 
-		-- *Old right widgets*
+		-- *Old right widgets*{{{
         -- { 
         --     layout = wibox.layout.fixed.horizontal,
         --     mykeyboardlayout,
         --     wibox.widget.systray(),
         --     mytextclock,
         --     s.mylayoutbox,
-        -- },
+        -- },}}}
 
 	-- Right widget
 		{ -- right widgets
