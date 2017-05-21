@@ -10,22 +10,17 @@ local wa = mouse.screen.workarea
 -- Color scheme
 -----------------------------------------------------------------------------------------------------------------------
 theme.color = {
-	-- main      = "#064E71",
-	-- gray      = "#575757",
-	-- bg        = "#161616",
-	-- urgent    = "#B32601",
-	-- highlight = "#ffffff",
-	main      = "#a5c261",
-	gray      = "#575757",
-	bg        = xrdb.background,
-	bg_second = "#181818",
-	wibox     = "#202020",
-	icon      = "#a0a0a0",
-	text      = xrdb.foreground,
-	urgent    = xrdb.color9,
-	highlight = xrdb.color15,
+	main      = "#b8bb26",
+	gray      = "#504945",
+	bg        = "#1d2021",
+	bg_second = "#1b1819",
+	wibox     = "#1d2021",
+	icon      = "#d5c4a1",
+	text      = "#d5c4a1",
+	urgent    = "#fb4934",
+	highlight = "#1d2021",
 
-	border    = "#404040",
+	border    = "#504945",
 	shadow1   = "#141414",
 	shadow2   = "#313131",
 	shadow3   = "#1c1c1c",
@@ -104,7 +99,7 @@ theme.desktop.line_height = 18
 
 theme.desktop.color = {
 	main  = theme.color.main,
-	gray  = theme.color.gray_desktop or "#404040",
+	gray  = theme.color.gray_desktop or "#504945",
 	wibox = theme.color.bg .. "00"
 }
 
@@ -350,7 +345,7 @@ theme.widget.wrapper = {
 	cpuram      = { 4, 4, 5, 5 },
 	keyboard    = { 4, 4, 4, 4 },
 	mail        = { 4, 4, 4, 4 },
-	battery     = { 8, 10, 7, 7 },
+	battery     = { 4, 4, 4, 4 },
 	tray        = { 8, 8, 5, 5 },
 	tasklist    = { 4, 0, 0, 0 }, -- centering tasklist widget
 }
@@ -670,7 +665,7 @@ theme.float.decoration.button = {
 	color = theme.color
 }
 
-theme.float.decoration.button.color.text = "#cccccc"
+theme.float.decoration.button.color.text = "#d5c4a1"
 theme.float.decoration.button.color.shadow_down = theme.color.gray
 
 theme.float.decoration.field = {

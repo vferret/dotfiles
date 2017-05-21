@@ -721,6 +721,10 @@ function hotkeys:init(args)
 			{ env.mod }, "Down", function() awful.layout.inc(-1) end,
 			{ description = "Select previous layout", group = "Layouts" }
 		},
+		{
+			{ env.mod }, "b", function () awful.spawn("firefox") end,
+			{ description = "open a browser", group = "launcher" }
+		}
 	}
 
 	-- Client keys
@@ -731,7 +735,7 @@ function hotkeys:init(args)
 			{ description = "Toggle fullscreen", group = "Client keys" }
 		},
 		{
-			{ env.mod }, "F4", function(c) c:kill() end,
+			{ env.mod, "Shift" }, "c", function(c) c:kill() end,
 			{ description = "Close", group = "Client keys" }
 		},
 		{
@@ -749,6 +753,13 @@ function hotkeys:init(args)
 		{
 			{ env.mod }, "m", function(c) c.maximized = not c.maximized; c:raise() end,
 			{ description = "Maximize", group = "Client keys" }
+		},
+		{   { env.mod }, "space", function () awful.layout.inc( 1) end,
+            { description = "select next", group = "layout" }
+		},
+		{
+    		{ env.mod, "Shift" }, "space", function () awful.layout.inc(-1) end,
+			{ description = "select previous", group = "layout" }
 		}
 	}
 

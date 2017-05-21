@@ -86,9 +86,9 @@ map J 10j
 nmap h <C-PageUp>
 nmap l <C-PageDown>
 
-" hi Normal 		color: #ddc; background: #333; font: 10pt "M+ 1mn";
-" hi CmdLine>*		color: #ddc; background: #333; font: bold 10pt "M+ 1mn";
-" hi CompDesc		color: #ddc; background: #333; font: 10pt "M+ 1mn";
+" hi Normal 		color: #d5c4a1; background: #333; font: 10pt "M+ 1mn";
+" hi CmdLine>*		color: #d5c4a1 background: #333; font: bold 10pt "M+ 1mn";
+" hi CompDesc		color: #d5c4a1; background: #333; font: 10pt "M+ 1mn";
 " hi CompItem		font: 10pt "M+ 1mn";
-" hi CompResult		color: #ddc; background: #333; font: 10pt "M+ 1mn";
-" hi StatusLine		color: #ddc; background: #333; font: bold 10pt "M+ 1mn";
+" hi CompResult		color: #d5c4a1; background: #333; font: 10pt "M+ 1mn";
+" hi StatusLine		color: #d5c4a1; background: #333; font: bold 10pt "M+ 1mn";

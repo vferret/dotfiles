@@ -33,7 +33,7 @@ rules.titlebar_exeptions = {
 }
 
 rules.maximized = {
-	class = { "Emacs24" }
+	class = { "Firefox, urxvt" }
 }
 
 -- Build rule table
@@ -67,11 +67,15 @@ function rules:init(args)
 		{
 			rule_any   = { type = { "normal", "dialog" }},
 			except_any = self.titlebar_exeptions,
-			properties = { titlebars_enabled = true }
+			properties = { titlebars_enabled = false }
 		},
 		{
 			rule_any   = { type = { "normal" }},
 			properties = { placement = awful.placement.no_overlap + awful.placement.no_offscreen }
+		},
+		{
+			rule = { class = "Firefox" },
+			properties = { screen = 1, tag = "Inet" }
 		}
 	}
 

@@ -31,6 +31,8 @@ set clipboard=unnamed		" Включить общий буфер
 let &t_SI = "\<Esc>[5 q"	" Курсор для режима INSERT
 let &t_SR = "\<Esc>[3 q"	" Курсор для режима REPLACE
 let &t_EI = "\<Esc>[1 q"	" Курсор для режима NORMAL 
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 set dir=~/.cache/vim
 set showtabline=1			" Показывать строку вкладок всегда
 set laststatus=2			" Показывать строку статуса всегда
@@ -226,6 +228,4 @@ endif
 
 " Прочее {{{
 set nobackup
-let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 " }}}

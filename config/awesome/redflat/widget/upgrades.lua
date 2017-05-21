@@ -61,21 +61,22 @@ function upgrades.new(update_timeout, style)
 	-- Update info function
 	--------------------------------------------------------------------------------
 	local function update_count(output)
-		local c = string.match(output, "(%d+)%supgraded")
+		--local c = string.match(output, "(%d+)%supgraded")
+		local c = output
 		object.tp:set_text(c .. " updates")
 
-		local color = tonumber(c) > 0 and style.color.main or style.color.icon
-		object.widget:set_color(color)
+		-- local color = tonumber(c) > 0 and style.color.main or style.color.icon
+		-- object.widget:set_color(color)
 
-		if style.need_notify and (tonumber(c) > 0 or force_notify) then
+		--if style.need_notify and (tonumber(c) > 0 or force_notify) then
 			rednotify:show(redutil.table.merge({ text = c .. " updates available" }, style.notify))
-		end
+		--end
 	end
 
 	function object.update(args)
 		local args = args or {}
 		force_notify = args.is_force
-		awful.spawn.easy_async("pacman -Qu", update_count)
+		awful.spawn.easy_async("pacman -Qq", update_count)
 	end
 
 	-- Set update timer

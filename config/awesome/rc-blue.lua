@@ -207,7 +207,7 @@ awful.screen.connect_for_each_screen(
 		env.wallpaper(s)
 
 		-- tags
-		awful.tag({ "Main", "Full", "Edit", "Read", "Free" }, s, { al[5], al[6], al[6], al[4], al[3] })
+		awful.tag({ "Main", "Edit", "Inet", "Meda", "Work" }, s, { al[5], al[6], al[6], al[4], al[3] })
 
 		-- layoutbox widget
 		layoutbox[s] = redflat.widget.layoutbox({ screen = s })
@@ -219,7 +219,7 @@ awful.screen.connect_for_each_screen(
 		tasklist[s] = redflat.widget.tasklist({ screen = s, buttons = tasklist.buttons })
 
 		-- panel wibox
-		s.panel = awful.wibar({ position = "bottom", screen = s, height = beautiful.panel_height or 36 })
+		s.panel = awful.wibar({ position = "top", screen = s, height = beautiful.panel_height or 36 })
 
 		-- add widgets to the wibox
 		s.panel:setup {
@@ -242,8 +242,8 @@ awful.screen.connect_for_each_screen(
 			{ -- right widgets
 				layout = wibox.layout.fixed.horizontal,
 
-				separator,
-				env.wrapper(mail.widget, "mail", mail.buttons),
+				-- separator,
+				-- env.wrapper(mail.widget, "mail", mail.buttons),
 				separator,
 				env.wrapper(kbindicator.widget, "keyboard", kbindicator.buttons),
 				separator,
